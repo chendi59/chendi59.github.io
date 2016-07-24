@@ -80,7 +80,7 @@ toc:
 ## if you don't want display contents in a specified post,you can modify `front-matter` and add `toc: false`.
 
 #### Links
-Links:
+links:
   万一: http://www.cnblogs.com/del/
   zd423: http://www.zdfans.com/
   QiuQuan's Blog: http://www.qiuquan.cc/
