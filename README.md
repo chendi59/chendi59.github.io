@@ -25,7 +25,8 @@
 
 	在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：
 
-			1.1 依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为develop）；
+			1.1 依次执行git add .、git commit -m “…”、git push origin hexo指令
+				将改动推送到GitHub（此时当前分支应为develop）；
 			1.2 然后才执行hexo generate -d发布网站到master分支上。
 
 2. **本地资料丢失**
@@ -33,4 +34,5 @@
 	当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：
 
 		2.1 使用git clone git@github.com:zzming/zzming.github.io.git拷贝仓库（默认分支为develop）；
-		2.2 在本地新拷贝的zzming.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
+		2.2 在本地新拷贝的zzming.github.io文件夹下通过Git bash依次执行下列指令：
+			npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
