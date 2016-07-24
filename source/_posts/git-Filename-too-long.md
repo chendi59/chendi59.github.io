@@ -1,7 +1,7 @@
 ---
-title: 'git: Filename too long的解决办法'
-date: 2016-07-24 16:01:15
-tags:git
+title: 'git: Filename too long'
+date: 2016-07-24 16:13:03
+tags:
 ---
 在git bash中，运行下列命令：
 
