@@ -126,7 +126,7 @@ google_cse:
 ## title: search
 ## ---
 baidu_search:     ## http://zn.baidu.com/
-  enable: true
+  enable: false
   id: 3642746597830030121  ## e.g. "783281470518440642"  for your baidu search id
   site: http://zhannei.baidu.com/cse/search  ## your can change to your site instead of the default site
   
