@@ -1,474 +1,201 @@
-
- <!DOCTYPE HTML>
-<html >
+<html>
 <head>
-  <meta charset="UTF-8">
-  
-    <title>git: Filename too long | zzming</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="zzming">
-    
-
-    
-    <meta name="description" content="在git bash中，运行下列命令：
-git config --global core.longpaths true
-–global是该参数的使用范围，如果只想对本版本库设置该参数，只要在上述命令中去掉–global即可。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="git: Filename too long">
-<meta property="og:url" content="http://www.zzming.com/2016/07/24/git-Filename-too-long/index.html">
-<meta property="og:site_name" content="zzming">
-<meta property="og:description" content="在git bash中，运行下列命令：
-git config --global core.longpaths true
-–global是该参数的使用范围，如果只想对本版本库设置该参数，只要在上述命令中去掉–global即可。">
-<meta property="og:updated_time" content="2016-07-24T08:14:03.328Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git: Filename too long">
-<meta name="twitter:description" content="在git bash中，运行下列命令：
-git config --global core.longpaths true
-–global是该参数的使用范围，如果只想对本版本库设置该参数，只要在上述命令中去掉–global即可。">
-<meta name="twitter:creator" content="@1006686787">
-
-    
-    <link rel="alternative" href="/atom.xml" title="zzming" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑"!important;}
+		#l-map {height:100%;}
+	</style>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=y7I42kWI1lRqTPmv2l5SOBU8"></script>
+	<title>公交/地铁线路查询</title>
 </head>
-
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="zzming" title="zzming"/></a>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4" style="margin-top:20px;">
+				<div>
+					<div class="form-group">
+					    <label for="keyword">请输入公交站名，如：“西单”：</label>
+					    <input type="text" class="form-control" id="keyword" placeholder="公交站名"  value="西单"/>
+					</div>
+					<div class="form-group">
+					    <label for="location">请输入城市名，如北京（仅作参考，如搜索泉城广场时，北京没有这个地址，一样会找到济南，但如果北京也有，就不会找济南了）：</label>
+					    <div class="row">
+					    	<div class="col-md-9"><input type="text" class="form-control" id="location" placeholder="城市名" value="北京"/></div>
+					    	<div class="col-md-3"><button id="query" class="btn btn-default">查询</button></div>
+					    </div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-body" id="l-result"></div>
+					</div>
+					<!--<div class="panel panel-default">
+						<div class="panel-body">
+							<p>实现代码分析参照我在博客园上的<a href="http://www.cnblogs.com/smarterplanet/p/4294821.html" target="_blank">文章</a></p>
+						</div>
+					</div>-->
+				</div>
 			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="zzming">zzming</a></h1>
-				<h2 class="blog-motto"></h2>
+			<div class="col-md-8">
+				<div id="l-map"></div>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">主页</a></li>
-					
-						<li><a href="/archives">归档</a></li>
-					
-						<li><a href="/about">关于</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:www.zzming.com">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/07/24/git-Filename-too-long/" title="git: Filename too long" itemprop="url">git: Filename too long</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="zzming" target="_blank" itemprop="author">zzming</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-24T08:13:03.000Z" itemprop="datePublished"> Published 2016-07-24</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			
-		
 		</div>
-		
-		<p>在git bash中，运行下列命令：</p>
-<pre><code>git config --global core.longpaths true
-</code></pre><p>–global是该参数的使用范围，如果只想对本版本库设置该参数，只要在上述命令中去掉–global即可。</p>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-	<div class="article-share" id="share">
-	
-	  <div data-url="http://www.zzming.com/2016/07/24/git-Filename-too-long/" data-title="git: Filename too long | zzming" data-tsina="iot022" class="share clearfix">
-	  </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
-
-<div class="next">
-<a href="/2016/07/24/hello-world/"  title="Hello World">
- <strong>下一篇：</strong><br/> 
- <span>Hello World
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-<section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/07/24/git-Filename-too-long/" data-title="git: Filename too long" data-url="http://www.zzming.com/2016/07/24/git-Filename-too-long/"></div>
-</section>
-
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
- 
- 
- 
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
-  
-<div class="github-card">
-<p class="asidetitle">Github Card</p>
-<div class="github-card" data-github="zzming" data-width="220" data-height="119" data-theme="medium">
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
-</div>
-  </div>
-
-
-
-  
-
-  
-
-  <div class="linkslist">
-  <p class="asidetitle">Links</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="http://www.cnblogs.com/del/" target="_blank" title="万一">万一</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://www.zdfans.com/" target="_blank" title="zd423">zd423</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://www.qiuquan.cc/" target="_blank" title="QiuQuan&#39;s Blog">QiuQuan&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
-</div>
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
+		<>
 	</div>
 	
-	
-	<section class="info">
-		<p> zzming <br/>
-			这世界，我来了！</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/iot022" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		<a href="https://github.com/zzming" target="_blank" class="icon-github" title="github"></a>
-		
-		
-		
-		<a href="https://twitter.com/1006686787" target="_blank" class="icon-twitter" title="twitter"></a>
-		
-		
-		<a href="https://www.facebook.com/zzming" target="_blank" class="icon-facebook" title="facebook"></a>
-		
-		
-		
-		
-		<a href="http://www.zhihu.com/people/zzming" target="_blank" class="icon-zhihu" title="知乎"></a>
-		
-		
-		
-	</div>
-			
-		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
-		
-		<a href="/about" target="_blank" title="zzming">zzming</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
-        
-    }
-  });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
-
-
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"zzming"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
-
-
-
-<!-- Analytics Begin -->
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
-
-
-<!-- MathJax End -->
-
-<!-- Tiny_search Begin -->
-
-<!-- Tiny_search End -->
-
-  </body>
+</body>
 </html>
+<script type="text/javascript">
+
+	var map = new BMap.Map("l-map");
+	var busStationIcon = new BMap.Icon("busstation_marker.png", new BMap.Size(10,10));
+	var busStationHover = new BMap.Icon("busstation_marker_hover.png", new BMap.Size(10,10));
+	var infoWindow = new BMap.InfoWindow("");
+	var currentLocation;
+
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+	map.enableScrollWheelZoom();
+
+	var activePolyline;			// hover bus line
+	var stationList = Array();	// hover bus line stations
+	var currentPolyline;		// hovered origin line
+
+	function addCircle(busline, busStation) {
+		var marker = new BMap.Marker(busStation.position, {icon:busStationIcon});
+		marker.setTitle(busStation.name);
+		marker.addEventListener("click", function(){
+			infoWindow.setTitle(busStation.name + " (" + busline.name + ")");
+			infoWindow.setContent("");
+			marker.openInfoWindow(infoWindow);
+
+			new BMap.LocalSearch(currentLocation, {
+			onSearchComplete: function(result) {
+				var poi;
+				for (var i = 0 ; i < result.getCurrentNumPois() ; i++) {
+					poi = result.getPoi(i);
+					if (poi.type != BMAP_POI_TYPE_NORMAL && poi.title == busStation.name) {
+						infoWindow.setContent(poi.address);
+						break;
+					}
+				}
+			}
+		}).search(busStation.name);
+		});
+		marker.addEventListener("mouseover", function(){
+			marker.setIcon(busStationHover);
+		});
+		marker.addEventListener("mouseout", function(){
+			marker.setIcon(busStationIcon);
+		});
+		map.addOverlay(marker);
+		stationList.push(marker);
+	}
+
+	function removeCircles() {
+		while (stationList.length > 0) {
+			var marker = stationList.shift();
+			map.removeOverlay(marker);
+		}
+	}
+
+	var busutil = new BMap.BusLineSearch(map,{
+		//renderOptions:{panel:"r-result"},
+		onGetBusListComplete: function(buslist) {
+			busutil.getBusLine(buslist.getBusListItem(0));
+		},
+		onGetBusLineComplete: function(busline) {
+			var color = "#" + Math.floor(Math.random() * 65535 * 256).toString(16);
+			var polyline = new BMap.Polyline(busline.getPath(), {strokeColor:color, strokeWeight:5, strokeOpacity:0.7});
+			map.addOverlay(polyline);
+			if (isMobile()) {
+				polyline.addEventListener("click", function(evt){
+					showPolyline(evt, polyline, busline);
+				});
+			} else {
+				polyline.addEventListener("mouseover", function(evt){
+					showPolyline(evt, polyline, busline);
+				});
+			}
+		}
+	});
+
+	function showPolyline(evt, polyline, busline) {
+		if (evt.target == currentPolyline) {
+			return;
+		}
+		currentPolyline = polyline;
+		map.removeOverlay(activePolyline);
+		removeCircles();
+		activePolyline = new BMap.Polyline(busline.getPath(), {strokeColor:"#3333FF", strokeWeight:5, strokeOpacity:0.9});
+		map.addOverlay(activePolyline);
+		
+		for (var i = 0 ; i < busline.getNumBusStations() ; i++) {
+			var busStation = busline.getBusStation(i);
+			addCircle(busline, busStation);
+		}
+	}
+
+	function searchComplete(result) {
+		// result instanceof LocalResult
+		// result.getPoi(i) instanceof LocalResultPoi
+		var resultPanel = document.getElementById("l-result");
+		for (var i = 0 ; i < result.getCurrentNumPois() ; i++) {
+			var poi = result.getPoi(i);
+			if (poi.type == BMAP_POI_TYPE_NORMAL) {
+				continue;
+			}
+			var link = document.createElement('a'); 
+			link.setAttribute('href', 'javascript:void(0)');
+			link.poi = poi;
+			link.onclick=function(){
+				map.clearOverlays();
+				currentLocation = this.poi.province;
+				var marker = new BMap.Marker(this.poi.point);  // 创建标注
+				map.addOverlay(marker);
+				map.panTo(this.poi.point);
+				var busNames = this.poi.address.split(';');
+				for (i = 0 ; i < busNames.length ; i++) {
+					busutil.getBusList(busNames[i]);
+				}
+			};
+			link.innerText = poi.title + " (" + poi.province + "): " + poi.tags + " : " + poi.address;
+			resultPanel.appendChild(link);
+			resultPanel.appendChild(document.createElement('br'));
+		}
+	}
+
+	document.getElementById('query').onclick=function(){
+		map.clearOverlays();
+		document.getElementById("l-result").innerHTML = "";
+		new BMap.LocalSearch(document.getElementById('location').value, {
+			onSearchComplete: searchComplete
+		}).search(document.getElementById('keyword').value);
+	};
+
+	var browser={   
+		versions:function(){           
+			var u = navigator.userAgent, app = navigator.appVersion;           
+			return {               
+			trident: u.indexOf('Trident') > -1, //IE内核               
+			presto: u.indexOf('Presto') > -1, //opera内核               
+			webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核               
+			gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+			mobile: !!u.match(/AppleWebKit.*Mobile/) || !!u.match(/Windows Phone/) || !!u.match(/Android/) || !!u.match(/MQQBrowser/),
+			ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端               
+			android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器               
+			iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器               
+			iPad: u.indexOf('iPad') > -1, //是否iPad               
+			webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部           
+			};
+		}()
+	}
+	function isMobile() {
+		return browser.versions.mobile;
+	}
+	document.writeln(" 是否为移动终端: "+browser.versions.mobile);
+	document.writeln(" ios终端: "+browser.versions.ios);
+	document.writeln(" android终端: "+browser.versions.android);
+	document.writeln(" 是否为iPhone: "+browser.versions.iPhone);
+	document.writeln(" 是否iPad: "+browser.versions.iPad);
+	document.writeln(navigator.userAgent);
+</script>
