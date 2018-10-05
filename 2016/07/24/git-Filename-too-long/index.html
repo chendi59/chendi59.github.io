@@ -52,7 +52,9 @@
 	var infoWindow = new BMap.InfoWindow("");
 	var currentLocation;
 
-	map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+	var map = new BMap.Map("allmap");  // 创建Map实例
+	map.centerAndZoom("济南",15);      // 初始化地图,用城市名设置地图中心点
+	//map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
 	map.enableScrollWheelZoom();
 
 	var activePolyline;			// hover bus line
